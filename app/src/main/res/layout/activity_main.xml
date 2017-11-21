@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -10,15 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="id.ac.uai.anif.khafiz97.calculatorsederhana.MainActivity">
 
-    <include
-        layout="@layout/calc_result"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right" />
+        android:background="@drawable/images"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#cecaca"
+            android:textColor="#020202"
+            android:hint="Input"
+            android:textSize="25sp"
+            android:id="@+id/edt1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#cecaca"
+            android:textColor="#020202"
+            android:hint="Output"
+            android:textSize="25sp"
+            android:id="@+id/edt2"/>
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="vertical">
 
@@ -33,37 +50,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorFuncBtnBackground"
+                android:background="#d2bd53"
                 android:minHeight="80dp"
                 android:text="C"
-                android:textColor="@color/colorFuncText"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_small_bracket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorFuncBtnBackground"
-                android:minHeight="80dp"
-                android:text="( )"
-                android:textColor="@color/colorFuncText"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_percentage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorFuncBtnBackground"
-                android:minHeight="80dp"
-                android:text="%"
-                android:textColor="@color/colorFuncText"
+                android:textColor="#0000F0"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -72,15 +62,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorFuncBtnBackground"
+                android:background="#d2bd53"
                 android:minHeight="80dp"
                 android:text="Del"
-                android:textColor="@color/colorFuncText"
+                android:textColor="#0000F0"
                 android:textSize="30sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -133,11 +121,7 @@
                 android:minHeight="80dp"
                 android:text="X"
                 android:textColor="@color/colorFuncBtnBackground"
-                android:textSize="30dp"
-
-                />
-
-
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -191,9 +175,7 @@
                 android:minHeight="80dp"
                 android:text="-"
                 android:textColor="@color/colorFuncBtnBackground"
-                android:textSize="30dp"
-
-                />
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -247,11 +229,8 @@
                 android:minHeight="80dp"
                 android:text="+"
                 android:textColor="@color/colorFuncBtnBackground"
-                android:textSize="30dp"
-
-                />
+                android:textSize="30dp" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -283,6 +262,23 @@
                 android:textSize="25sp" />
 
             <Button
+                android:id="@+id/btn_divide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorFuncText"
+                android:minHeight="80dp"
+                android:text="/"
+                android:textColor="@color/colorFuncBtnBackground"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <Button
                 android:id="@+id/btn_equal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -294,17 +290,7 @@
                 android:text="="
                 android:textColor="#fff"
                 android:textSize="25sp" />
-
-            <Button
-                android:id="@+id/btn_divide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorFuncText"
-                android:minHeight="80dp"
-                android:text="/"
-                android:textColor="@color/colorFuncBtnBackground"
-                android:textSize="30dp"  />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

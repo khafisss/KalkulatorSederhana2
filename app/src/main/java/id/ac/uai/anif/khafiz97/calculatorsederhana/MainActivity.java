@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import org.mozilla.javascript.Scriptable;
 
 
 public class MainActivity extends AppCompatActivity {
     Button btnClear, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0;
-    TextView calcProses, calcResult;
+
     String Process;
-    Boolean bracket;
-    Button btnKali, btnKurang, btnTambah, btnBagi, btnDesimal, btnBack, btnBracket, btnEqual, btnPersen;
+    TextView edt1,edt2;
+
+    private  double akhir=0.0;
+    float mValueOne, mValueTwo;
+    Boolean bracket, mAdd, mSub, mMul, mDiv;
+    Button btnKali, btnKurang, btnTambah, btnBagi, btnDesimal, btnBack, btnEqual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
         bracket = false;
 
         btnClear = (Button) findViewById(R.id.btn_delete);
-        calcProses = (TextView) findViewById(R.id.calc_proses);
-        calcResult = (TextView) findViewById(R.id.calc_result);
 
 
-        calcProses.setText("");
-        calcResult.setText("");
+        edt1 = (TextView) findViewById(R.id.edt1);
+        edt2 = (TextView) findViewById(R.id.edt2);
 
+        edt1.setText("");
+        edt2.setText("");
 
         btn1 = (Button) findViewById(R.id.btn_1);
         btn2 = (Button) findViewById(R.id.btn_2);
@@ -48,98 +52,88 @@ public class MainActivity extends AppCompatActivity {
         btnBagi = (Button) findViewById(R.id.btn_divide);
         btnDesimal = (Button) findViewById(R.id.btn_dot);
         btnBack = (Button) findViewById(R.id.btn_erase);
-
-        btnBracket = (Button) findViewById(R.id.btn_small_bracket);
         btnEqual = (Button) findViewById(R.id.btn_equal);
-        btnPersen = (Button) findViewById(R.id.btn_percentage);
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calcProses.setText("");
-                calcResult.setText("");
 
-            }
-        });
         /************************
          * Button number onClick
          ************************/
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "1");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "1");
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "2");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "2");
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "3");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "3");
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "4");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "4");
             }
         });
 
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "5");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "5");
             }
         });
 
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "6");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "6");
             }
         });
 
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "7");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "7");
             }
         });
 
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "8");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "8");
             }
         });
 
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "9");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "9");
             }
         });
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "0");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + "0");
             }
         });
 
@@ -149,77 +143,76 @@ public class MainActivity extends AppCompatActivity {
         btnKali.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "X");
+                    mValueOne = Float.parseFloat(edt1.getText() + "");
+                    mMul = true;
+                    Process = edt1.getText().toString();
+                    edt1.setText(Process + "X");
+
             }
         });
-
         btnKurang.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "-");
+                    mValueOne = Float.parseFloat(edt1.getText() + "");
+                    mSub = true;
+                    Process = edt1.getText().toString();
+                    edt1.setText(Process + "-");
+
             }
         });
 
         btnTambah.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "+");
+                if(edt1 == null){
+                    edt1.setText("");
+                }
+                else{
+                    mValueOne = Float.parseFloat(edt1.getText() + "");
+                    mAdd = true;
+                    Process = edt1.getText().toString();
+                    edt1.setText(Process + "+");
+
+                }
             }
         });
 
         btnBagi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "/");
+                    mValueOne = Float.parseFloat(edt1.getText() + "");
+                    mDiv = true;
+                    Process = edt1.getText().toString();
+                    edt1.setText(Process + "/");
+
             }
+
         });
 
+        btnClear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                edt1.setText("");
+            }
+        });
         btnDesimal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + ".");
+                Process = edt1.getText().toString();
+                edt1.setText(Process + ".");
             }
         });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Process = calcProses.getText().toString();
+                Process = edt1.getText().toString();
                 if(Process.length() > 0){
                     Process = Process.substring(0, Process.length()-1);
-                    calcProses.setText(Process);
+                    edt1.setText(Process);
                 }
             }
         });
-
-        btnBracket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(bracket){
-                    Process = calcProses.getText().toString();
-                    calcProses.setText(Process + ")");
-                    bracket = false;
-                }else{
-                    Process = calcProses.getText().toString();
-                    calcProses.setText(Process + "(");
-                    bracket = true;
-                }
-            }
-        });
-
-        btnPersen.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Process = calcProses.getText().toString();
-                calcProses.setText(Process + "%");
-            }
-        });
-
 
 
         /****************************************************
@@ -228,7 +221,39 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
+                mValueTwo = Float.parseFloat(edt1.getText() + "");
+                if (mAdd == true){
+                    akhir = mValueOne+mValueTwo;
+                    String hasilakhir = String.valueOf(akhir);
+                    edt2.setText(hasilakhir);
+                    mAdd=false;
+                }
+
+                if (mSub == true){
+                    akhir = mValueOne-mValueTwo;
+                    String hasilakhir = String.valueOf(akhir);
+                    edt2.setText(hasilakhir);
+                    mSub=false;
+                }
+
+                if (mMul == true){
+                    akhir = mValueOne*mValueTwo;
+                    String hasilakhir = String.valueOf(akhir);
+                    edt2.setText(hasilakhir);
+                    mMul=false;
+                }
+
+                if (mDiv == true){
+                    akhir = mValueOne/mValueTwo;
+                    String hasilakhir = String.valueOf(akhir);
+                    edt2.setText(hasilakhir);
+                    mDiv=false;
+                }
+
+                /*
                 Process = calcProses.getText().toString();
+
 
                 Process = Process.replaceAll("X", "*");
                 Process = Process.replaceAll("%", "/100");
@@ -244,10 +269,8 @@ public class MainActivity extends AppCompatActivity {
                 }catch (Exception e){
                     result = "Error";
                 }
-
-                calcResult.setText(result);
+                */
             }
         });
-
     }
 }
